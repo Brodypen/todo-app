@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "task": "Give dog a bath",
+    "desc": "",
+    "proj": 0,
+    "date": "2022-07-14",
+    "complete": true
+  },
+  {
+    "id": 2,
+    "task": "Do laundry",
+    "desc": "",
+    "proj": 0,
+    "date": "2022-07-14",
+    "complete": true
+  },
+  {
+    "id": 3,
+    "task": "Vacuum floor",
+    "desc": "",
+    "proj": 0,
+    "date": "2022-07-14",
+    "complete": false
+  },
+  {
+    "id": 4,
+    "task": "Feed cat",
+    "desc": "",
+    "proj": 0,
+    "date": "2022-07-14",
+    "complete": true
+  }
+]

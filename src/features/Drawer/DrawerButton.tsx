@@ -1,30 +1,63 @@
 import React from "react";
 import {
-  Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, ModalFooter, useDisclosure,
- 
+  Button,
+  Divider,
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerHeader,
+  DrawerOverlay,
+  Stack,
+  useDisclosure,
 } from "@chakra-ui/react";
+import { ColorModeSwitcher } from "../../components/ColorModeSwitcher";
+import { HomeButton } from "./HomeButton";
+import { FaCalendar, FaCalendarDay, FaCalendarWeek, FaStar } from "react-icons/fa";
 const DrawerButton: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <Button onClick={onOpen}>Open Modal</Button>
+      <Button onClick={onOpen}></Button>
+      <Drawer isOpen={isOpen} placement="left" onClose={onClose} size="sm">
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerBody textAlign="left">
+            <Stack direction='column'>
+              <DrawerHeader textAlign="left" borderBottomWidth="1px">
+                Home
+              </DrawerHeader>
 
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-          </ModalBody>
+              <HomeButton
+                text="All Tasks"
+                icon={<FaCalendar></FaCalendar>}
+              ></HomeButton>
+              <HomeButton
+                text="Today Tasks"
+                icon={<FaCalendarDay></FaCalendarDay>}
+              ></HomeButton>
+              <HomeButton
+                text="Week Tasks"
+                icon={<FaCalendarWeek></FaCalendarWeek>}
+              ></HomeButton>
+              <HomeButton
+                text="Important Tasks"
+                icon={<FaStar></FaStar>}
+              ></HomeButton>
 
-          <ModalFooter>
-            <Button colorScheme='blue' mr={3} onClick={onClose}>
-              Close
-            </Button>
-            <Button variant='ghost'>Secondary Action</Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+              <DrawerHeader textAlign="left" borderBottomWidth="1px">
+                Projects
+              </DrawerHeader>
+              <DrawerHeader textAlign="left" borderBottomWidth="1px">
+                Options
+              </DrawerHeader>
+
+              <ColorModeSwitcher />
+            </Stack>
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
     </>
   );
 };

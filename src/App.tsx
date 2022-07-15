@@ -1,16 +1,17 @@
 import * as React from "react";
-import { ChakraProvider, Box, Grid, theme, Flex } from "@chakra-ui/react";
-import { ColorModeSwitcher } from "./components/ColorModeSwitcher";
+import { ChakraProvider, Box, theme, Flex } from "@chakra-ui/react";
 import DrawerButton from "./features/Drawer/DrawerButton";
-import InfoModal from "./components/InfoModal";
+import data from "./data/data.json";
 
-export const App = () => (
+export const App = () => {
+  const [todoList, setToDoList] = React.useState(data);
+  return (
   <ChakraProvider theme={theme}>
-    <Box textAlign="center" fontSize="xl">
-      <Flex h="80vh" justify="flex-end">
-        <ColorModeSwitcher />
-        <InfoModal />
+    <Box textAlign="center" fontSize="xl" padding={2}>
+      <Flex h="10vh" justify="flex-end">
+        <DrawerButton/>
       </Flex>
     </Box>
   </ChakraProvider>
-);
+  );
+};
