@@ -12,7 +12,7 @@ import {
   Link,
 } from "@chakra-ui/react";
 import { ColorModeSwitcher } from "../../components/ColorModeSwitcher";
-import { HomeButton } from "./HomeButton";
+import { HomeButton, ProjectButton } from "./HomeButton";
 import {
   FaCalendar,
   FaCalendarDay,
@@ -25,8 +25,17 @@ import {
 
 interface DrawerButtonProps {
   Projects: string[];
+  ProjectsOnClick: Function;
+  selectProjectOnClick: Function;
+  changeProjectName: Function;
 }
-export const DrawerButton = ({ Projects, ...props }: DrawerButtonProps) => {
+export const DrawerButton = ({
+  Projects,
+  ProjectsOnClick,
+  selectProjectOnClick,
+  changeProjectName,
+  ...props
+}: DrawerButtonProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
@@ -46,34 +55,45 @@ export const DrawerButton = ({ Projects, ...props }: DrawerButtonProps) => {
                 Home
               </DrawerHeader>
 
-              <HomeButton text="All Tasks" icon={<FaCalendar />}></HomeButton>
+              <HomeButton text="All Tasks" icon={<FaCalendar />}setHomeShowCase={ProjectsOnClick}></HomeButton>
               <HomeButton
                 text="Today Tasks"
                 icon={<FaCalendarDay />}
+                setHomeShowCase={ProjectsOnClick}
               ></HomeButton>
               <HomeButton
                 text="Week Tasks"
-                icon={<FaCalendarWeek />}
+                icon={<FaCalendarWeek />}setHomeShowCase={ProjectsOnClick}
               ></HomeButton>
-              <HomeButton text="Important Tasks" icon={<FaStar />}></HomeButton>
+              <HomeButton text="Important Tasks" icon={<FaStar />}setHomeShowCase={ProjectsOnClick}></HomeButton>
 
               <DrawerHeader textAlign="left" borderBottomWidth="1px">
                 Projects
               </DrawerHeader>
-              {Projects.map((project) => (
-                <HomeButton key={project} text={project} icon={<FaBars />}></HomeButton>
+              {Projects.map((project, index) => (
+                <ProjectButton
+                  key={index}
+                  text={project}
+                  icon={<FaBars />}
+                  setProject={selectProjectOnClick}
+                  index={index}
+                  changeProjectName={changeProjectName}
+                ></ProjectButton>
               ))}
+              {Projects.length < 5 &&
               <HomeButton
                 text="Create new project"
                 icon={<FaPlus />}
+                setHomeShowCase={ProjectsOnClick}
               ></HomeButton>
+}
               <DrawerHeader textAlign="left" borderBottomWidth="1px">
                 Options
               </DrawerHeader>
 
               <ColorModeSwitcher />
               <Link href="https://github.com/BrodyPen" isExternal>
-                <HomeButton text="GitHub" icon={<FaGithub />}></HomeButton>
+                <HomeButton text="GitHub" icon={<FaGithub />}setHomeShowCase={ProjectsOnClick}></HomeButton>
               </Link>
             </Stack>
           </DrawerBody>

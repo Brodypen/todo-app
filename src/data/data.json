@@ -5,7 +5,8 @@
     "desc": "",
     "proj": 0,
     "date": "2022-07-14",
-    "complete": true
+    "complete": true,
+    "important": false
   },
   {
     "id": 2,
@@ -13,7 +14,8 @@
     "desc": "",
     "proj": 0,
     "date": "2022-07-14",
-    "complete": true
+    "complete": true,
+    "important": false
   },
   {
     "id": 3,
@@ -21,7 +23,8 @@
     "desc": "",
     "proj": 0,
     "date": "2022-07-14",
-    "complete": false
+    "complete": false,
+    "important": false
   },
   {
     "id": 4,
@@ -29,6 +32,7 @@
     "desc": "",
     "proj": 0,
     "date": "2022-07-14",
-    "complete": true
+    "complete": true,
+    "important": false
   }
 ]
