@@ -4,11 +4,11 @@ import {
   Box,
   theme,
   Flex,
-  Button,
   Heading,
-  Spacer,
+
 } from "@chakra-ui/react";
 import { DrawerButton } from "./features/Drawer/DrawerButton";
+import {Todos } from "./features/Todo/Todos"
 import data from "./data/data.json";
 
 export const App = () => {
@@ -16,6 +16,7 @@ export const App = () => {
   const [todoProjects, setTodoProjects] = React.useState<string[]>([
     "Todo List",
   ]);
+
   const [selectProject, setSelectProject] = React.useState(0);
   const switchProjects = (project: string) => {
     console.log("HEYO SWITCH!")
@@ -42,6 +43,7 @@ export const App = () => {
   };
 
   return (
+   
     <ChakraProvider theme={theme}>
       <Box textAlign="center" fontSize="xl" padding={3}>
         <Flex h="5vh" justify="space-between" align="center">
@@ -53,6 +55,7 @@ export const App = () => {
           />
         </Flex>{" "}
         <Heading>{todoProjects[selectProject]}</Heading>
+        <Todos todos={todoList}></Todos>
       </Box>
     </ChakraProvider>
   );
