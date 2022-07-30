@@ -19,7 +19,6 @@ export const App = () => {
 
   const [selectProject, setSelectProject] = React.useState(0);
   const switchProjects = (project: string) => {
-    console.log("HEYO SWITCH!")
     for (let i = 0; i < todoProjects.length; i++) {
       if (todoProjects[i] === project) {
         setSelectProject(i);
@@ -28,7 +27,6 @@ export const App = () => {
     }
   };
   const changeProjectName = (newName: string, index: number) => {
-    console.log("HEY!");
     todoProjects.splice(index, 1, newName);
     setTodoProjects(todoProjects);
     switchProjects(newName);

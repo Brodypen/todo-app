@@ -1,5 +1,5 @@
-import { Button, ButtonGroup, Editable, EditableInput, EditablePreview, Input, Flex, IconButton, useEditableControls } from '@chakra-ui/react';
-import React from 'react';
+import { Button, Editable, EditableInput, EditablePreview, Input } from '@chakra-ui/react';
+import React, { FC } from 'react';
 
 interface HomeButtonProps {
     text: string;
@@ -28,7 +28,7 @@ export const HomeButton = ({setHomeShowCase, text, icon, ...props}:HomeButtonPro
 
   )
 };
-export const ProjectButton = ({setProject, changeProjectName, text, icon, index, ...props}:ProjButtonProps) => {
+export const ProjectButton:FC<ProjButtonProps> = ({setProject, changeProjectName, text, icon, index, ...props}) => {
   
      return (
     <Button

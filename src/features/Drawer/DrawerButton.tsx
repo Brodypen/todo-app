@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import {
   IconButton,
   Drawer,
@@ -29,13 +29,13 @@ interface DrawerButtonProps {
   selectProjectOnClick: Function;
   changeProjectName: Function;
 }
-export const DrawerButton = ({
+export const DrawerButton:FC<DrawerButtonProps> = ({
   Projects,
   ProjectsOnClick,
   selectProjectOnClick,
   changeProjectName,
   ...props
-}: DrawerButtonProps) => {
+}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
