@@ -1,6 +1,7 @@
+import { Button } from '@chakra-ui/react';
 import React from 'react'
 type todo = {
-    id: string,
+    id: number,
     task: string,
     "desc": string,
     "proj": number
@@ -10,10 +11,14 @@ type todo = {
 }
 interface TodoProps{
     todo: todo;
+    onClick: Function;
 }
 
-export const Todo = ({todo, ...props}: TodoProps) => {
+export const Todo = ({todo, onClick, ...props}: TodoProps) => {
+  function handleTodoClick(){
+    onClick(todo.id);
+  }
   return (
-    <div>{todo.task}</div>
+    <Button variant='ghost' size='md' onClick={handleTodoClick}>{todo.complete ? <s>{todo.task}</s> : <div>{todo.task}</div>}</Button>
   )
 }
