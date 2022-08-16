@@ -2,11 +2,10 @@ import * as React from "react";
 import { ChakraProvider, Box, theme, Flex, Heading, Spacer, Stack } from "@chakra-ui/react";
 import { DrawerButton } from "./features/Drawer/DrawerButton";
 import { Todos } from "./features/Todo/Todos";
-import data from "./data/data.json";
+
 
 export const App = () => {
-  // State vars
-  const [todoList, setToDoList] = React.useState(data);
+
   const [todoProjects, setTodoProjects] = React.useState<string[]>([
     "Todo List",
   ]);
@@ -34,15 +33,7 @@ export const App = () => {
       setTodoProjects(newProjects);
     }
   };
-  // Todos Functions
-  const toggleComplete = (id: number) => {
-    const newTodos = [...todoList];
-    const todo = newTodos.find(todo => todo.id === id)
-    if(todo){
-    todo.complete = !todo?.complete;
-  }
-    setToDoList(newTodos);
-  }
+  
 
   return (
     <ChakraProvider theme={theme}>
@@ -59,7 +50,7 @@ export const App = () => {
           <Heading marginBottom={10}>{todoProjects[selectProject]}</Heading>
           
 
-            <Todos todos={todoList} onClick={toggleComplete}></Todos>
+            <Todos></Todos>
 
       </Box>
     </ChakraProvider>
