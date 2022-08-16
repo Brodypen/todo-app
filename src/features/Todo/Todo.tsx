@@ -13,18 +13,19 @@ type todo = {
 interface TodoProps {
   todo: todo;
   onClick: Function;
+  handleDeleteTodo: (task: string) => void;
 }
 
-export const Todo = ({ todo, onClick, ...props }: TodoProps) => {
+export const Todo = ({ todo, onClick, handleDeleteTodo, ...props }: TodoProps) => {
   function handleTodoClick() {
-    onClick(todo.id);
+    onClick(todo.task);
   }
   return (
     <div>
       <Button variant="ghost" size="md" onClick={handleTodoClick}>
         {todo.complete ? <s>{todo.task}</s> : <div>{todo.task}</div>}
       </Button>
-      <Button marginLeft="2" variant="ghost" textColor="red.400">X</Button>
+      <Button marginLeft="2" variant="ghost" textColor="red.400" onClick={() => handleDeleteTodo(todo.task)}>X</Button>
     </div>
   );
 };
