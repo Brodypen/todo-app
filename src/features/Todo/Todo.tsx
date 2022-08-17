@@ -6,9 +6,13 @@ import {
   Text,
   VStack,
   IconButton,
+  EditableInput,
+  EditablePreview,
+  Input,
 } from "@chakra-ui/react";
 import React from "react";
 import { FaRegStar, FaStar } from "react-icons/fa";
+
 type todo = {
   id: number;
   task: string;
@@ -50,10 +54,19 @@ export const Todo = ({
             <Text noOfLines={1}>{todo.task}</Text>
           )}
         </Text>
-        <Text as="i">{todo.desc}</Text>
+        <Editable as="i" defaultValue={todo.desc}>
+          <EditablePreview />
+          <EditableInput />
+        </Editable>
       </VStack>
       <Spacer />
-      <Text noOfLines={2}>{todo.date}</Text>
+      <Editable defaultValue={todo.date}>
+        <EditablePreview />
+        <Input
+          as={EditableInput}
+          type="date"
+        />
+      </Editable>
       <IconButton
         variant="ghost"
         aria-label="Important"
