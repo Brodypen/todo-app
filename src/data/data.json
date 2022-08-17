@@ -2,7 +2,7 @@
   {
     "id": 1,
     "task": "Give dog a bath",
-    "desc": "",
+    "desc": "Wait... I don't have a dog. Delete this!",
     "proj": 0,
     "date": "2022-07-14",
     "complete": false,
@@ -11,16 +11,16 @@
   {
     "id": 2,
     "task": "Do laundry",
-    "desc": "",
+    "desc": "Finish, click on Task to strikethrough!",
     "proj": 0,
     "date": "2022-07-14",
     "complete": false,
-    "important": false
+    "important": true
   },
   {
     "id": 3,
     "task": "Vacuum floor",
-    "desc": "",
+    "desc": "Vacuum the floor of my room",
     "proj": 0,
     "date": "2022-07-14",
     "complete": false,
@@ -29,7 +29,7 @@
   {
     "id": 4,
     "task": "Feed cat",
-    "desc": "",
+    "desc": "Any cat",
     "proj": 0,
     "date": "2022-07-14",
     "complete": true,

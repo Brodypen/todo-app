@@ -1,6 +1,14 @@
-import { Button, HStack, Spacer } from "@chakra-ui/react";
+import {
+  Button,
+  Editable,
+  HStack,
+  Spacer,
+  Text,
+  VStack,
+  IconButton,
+} from "@chakra-ui/react";
 import React from "react";
-
+import { FaRegStar, FaStar } from "react-icons/fa";
 type todo = {
   id: number;
   task: string;
@@ -10,23 +18,55 @@ type todo = {
   complete: boolean;
   important: boolean;
 };
+interface changeProps {
+  complete: boolean;
+  important: boolean;
+}
 interface TodoProps {
   todo: todo;
-  onClick: Function;
   handleDeleteTodo: (task: string) => void;
+  handleChangeTodo: (task: string, operation: keyof changeProps) => void;
 }
 
-export const Todo = ({ todo, onClick, handleDeleteTodo, ...props }: TodoProps) => {
-  function handleTodoClick() {
-    onClick(todo.task);
-  }
+export const Todo = ({
+  todo,
+  handleDeleteTodo,
+  handleChangeTodo,
+  ...props
+}: TodoProps) => {
   return (
     <HStack>
-      <Button variant="ghost" size="md" onClick={handleTodoClick}>
-        {todo.complete ? <s>{todo.task}</s> : <div>{todo.task}</div>}
+      <VStack alignItems="stretch" spacing={0}>
+        <Text
+          fontSize="xl"
+          onClick={() => handleChangeTodo(todo.task, "complete")}
+          color={todo.important ? "yellow.400" : "none"}
+        >
+          {todo.complete ? (
+            <Text as="s" noOfLines={1}>
+              {todo.task}
+            </Text>
+          ) : (
+            <Text noOfLines={1}>{todo.task}</Text>
+          )}
+        </Text>
+        <Text as="i">{todo.desc}</Text>
+      </VStack>
+      <Spacer />
+      <Text noOfLines={2}>{todo.date}</Text>
+      <IconButton
+        variant="ghost"
+        aria-label="Important"
+        icon={todo.important ? <FaStar /> : <FaRegStar />}
+        onClick={() => handleChangeTodo(todo.task, "important")}
+      ></IconButton>
+      <Button
+        variant="ghost"
+        textColor="red.400"
+        onClick={() => handleDeleteTodo(todo.task)}
+      >
+        X
       </Button>
-      <Spacer/>
-      <Button marginLeft="2" variant="ghost" textColor="red.400" onClick={() => handleDeleteTodo(todo.task)}>X</Button>
     </HStack>
   );
 };

@@ -8,7 +8,7 @@ export const AddTodo = () => {
   return (
     <form onSubmit={handleSubmit}>
         <HStack>
-            <Input focusBorderColor='white' variant="filled"/>
+            <Input focusBorderColor='white' variant="filled" placeholder='What to do...?'/>
                   <Button type="submit">Add Task</Button>
         </HStack>
     </form>

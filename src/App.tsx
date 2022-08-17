@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ChakraProvider, Box, theme, Flex, Heading, Spacer, Stack, VStack } from "@chakra-ui/react";
+import { ChakraProvider, theme, Flex, Heading, Spacer, VStack } from "@chakra-ui/react";
 import { DrawerButton } from "./features/Drawer/DrawerButton";
 import { Todos } from "./features/Todo/Todos";
 
@@ -37,7 +37,7 @@ export const App = () => {
 
   return (
     <ChakraProvider theme={theme}>
-      <VStack p={5}>
+      <VStack p={5} spacing={3}>
         <Flex h="5vh" alignSelf='flex-start'>
           <DrawerButton
             Projects={todoProjects}
@@ -47,8 +47,8 @@ export const App = () => {
           />
         </Flex>{" "}
 
-          <Heading marginBottom={10}>{todoProjects[selectProject]}</Heading>
-          
+          <Heading>{todoProjects[selectProject]}</Heading>
+          <Spacer/>
 
             <Todos></Todos>
 
