@@ -1,4 +1,4 @@
-import { Button } from "@chakra-ui/react";
+import { Button, HStack, Spacer } from "@chakra-ui/react";
 import React from "react";
 
 type todo = {
@@ -21,11 +21,12 @@ export const Todo = ({ todo, onClick, handleDeleteTodo, ...props }: TodoProps) =
     onClick(todo.task);
   }
   return (
-    <div>
+    <HStack>
       <Button variant="ghost" size="md" onClick={handleTodoClick}>
         {todo.complete ? <s>{todo.task}</s> : <div>{todo.task}</div>}
       </Button>
+      <Spacer/>
       <Button marginLeft="2" variant="ghost" textColor="red.400" onClick={() => handleDeleteTodo(todo.task)}>X</Button>
-    </div>
+    </HStack>
   );
 };
