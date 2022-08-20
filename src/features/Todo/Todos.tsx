@@ -1,11 +1,10 @@
 import { Button, Divider, Stack, StackDivider, VStack } from "@chakra-ui/react";
-import React from "react";
+import React, { ChangeEvent, FormEvent} from "react";
 import { Todo } from "./Todo";
 import data from "../../data/data.json";
 import { AddTodo } from "./AddTodo";
 
 interface TodoProps {
-  id: number;
   task: string;
   desc: string;
   proj: number;
@@ -19,7 +18,7 @@ interface ChangeProps {
 }
 export const Todos = () => {
   const [todoList, setToDoList] = React.useState<TodoProps[]>(data);
-
+  const [valid, setValid] = React.useState<boolean>(true);
   // Todos Functions
   const handleDeleteTodo = (task: string) => {
     const updatedTodos = todoList.filter((todo) => todo.task !== task);
@@ -34,6 +33,29 @@ export const Todos = () => {
             setToDoList(newTodos);
   }
   // Add new Todos
+  const handleAddTodos = (todo: TodoProps) => {
+     const newTodos = [...todoList];
+    const CheckTodos = newTodos.find((Ntodo) => Ntodo.task === todo.task);
+    if(!CheckTodos){
+    const updatedTodos = [...todoList, todo];
+    setToDoList(updatedTodos);
+    setValid(true);
+    } else {
+      setValid(false);
+    }
+  }
+
+  const handleSubmitTodo = (task: string) => {
+    const todo = {
+       task: task,
+  desc: "Click me",
+  proj: 1,
+  date: "Click me",
+  complete: false,
+  important: false,
+    }
+    task && handleAddTodos(todo)
+  }
 
   return (
     <VStack
@@ -44,15 +66,15 @@ export const Todos = () => {
       maxW={{ base: "90vw", sm: "80vw", lg: "50vw", xl: "40vw" }}
       alignItems="stretch"
     >
-      {todoList.map((todo: TodoProps) => (
+      {todoList.map((todo: TodoProps, index) => (
         <Todo
           todo={todo}
-          key={todo.id}
+          key={`${todo.task}-${index}`}
           handleDeleteTodo={handleDeleteTodo}
           handleChangeTodo={handleChangeTodo}
         ></Todo>
       ))}
-      <AddTodo />
+      <AddTodo handleSubmitTodo={handleSubmitTodo} isValid={valid} />
     </VStack>
   );
 };

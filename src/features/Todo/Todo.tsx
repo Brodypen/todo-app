@@ -14,7 +14,6 @@ import React from "react";
 import { FaRegStar, FaStar } from "react-icons/fa";
 
 type todo = {
-  id: number;
   task: string;
   desc: string;
   proj: number;

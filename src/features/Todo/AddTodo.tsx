@@ -1,16 +1,32 @@
-import { Button, HStack, Input } from '@chakra-ui/react';
-import React from 'react'
+import { Button, HStack, Input } from "@chakra-ui/react";
+import React, { ChangeEvent } from "react";
+interface AddTodoProps {
+  handleSubmitTodo: Function;
+  isValid: boolean;
+}
+export const AddTodo = ({ handleSubmitTodo, isValid }: AddTodoProps) => {
+  const [task, setTask] = React.useState("");
 
-export const AddTodo = () => {
-    const handleSubmit =( e: React.FormEvent<HTMLFormElement>) => {
-
-    }
   return (
-    <form onSubmit={handleSubmit}>
-        <HStack>
-            <Input focusBorderColor='white' variant="filled" placeholder='What to do...?'/>
-                  <Button type="submit">Add Task</Button>
-        </HStack>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleSubmitTodo(task);
+      }}
+    >
+      <HStack>
+        <Input
+          type="text"
+          name="task"
+          value={task}
+          onChange={(e) => setTask(e.target.value)}
+          focusBorderColor="white"
+          variant="filled"
+          placeholder="What to do...?"
+          color={isValid ? "grey" : "red"}
+        />
+        <Button type="submit">Add Task</Button>
+      </HStack>
     </form>
   );
-}
+};

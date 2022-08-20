@@ -1,6 +1,5 @@
 [
   {
-    "id": 1,
     "task": "Give dog a bath",
     "desc": "Wait... I don't have a dog. Delete this!",
     "proj": 0,
@@ -9,29 +8,26 @@
     "important": false
   },
   {
-    "id": 2,
     "task": "Do laundry",
-    "desc": "Finish, click on Task to strikethrough!",
+    "desc": "Finish, click on Task name to strikethrough!",
     "proj": 0,
     "date": "2022-07-14",
     "complete": false,
     "important": true
   },
   {
-    "id": 3,
     "task": "Vacuum floor",
-    "desc": "Vacuum the floor of my room",
+    "desc": "This desc is weird... click me to change!",
     "proj": 0,
-    "date": "2022-07-14",
+    "date": "Click me",
     "complete": false,
     "important": false
   },
   {
-    "id": 4,
     "task": "Feed cat",
-    "desc": "Any cat",
+    "desc": "Date is wrong... click on date to change it!",
     "proj": 0,
-    "date": "2022-07-14",
+    "date": "2022-09-14",
     "complete": true,
     "important": false
   }
