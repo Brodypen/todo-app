@@ -1,6 +1,6 @@
 [
   {
-    "task": "Give dog a bath",
+    "task": "Vacuum dog",
     "desc": "Wait... I don't have a dog. Delete this!",
     "proj": 0,
     "date": "2022-07-14",
@@ -8,7 +8,7 @@
     "important": false
   },
   {
-    "task": "Do laundry",
+    "task": "Devour souls",
     "desc": "Finish, click on Task name to strikethrough!",
     "proj": 0,
     "date": "2022-07-14",
@@ -16,7 +16,7 @@
     "important": true
   },
   {
-    "task": "Vacuum floor",
+    "task": "Eat some pizza",
     "desc": "This desc is weird... click me to change!",
     "proj": 0,
     "date": "Click me",
@@ -24,11 +24,19 @@
     "important": false
   },
   {
-    "task": "Feed cat",
+    "task": "Feed floor",
     "desc": "Date is wrong... click on date to change it!",
     "proj": 0,
     "date": "2022-09-14",
     "complete": true,
+    "important": false
+  },
+  {
+    "task": "Inhale oxygen",
+    "desc": "Very important... star this!",
+    "proj": 0,
+    "date": "2022-02-14",
+    "complete": false,
     "important": false
   }
 ]

@@ -53,7 +53,7 @@ export const Todo = ({
             <Text noOfLines={1}>{todo.task}</Text>
           )}
         </Text>
-        <Editable as="i" defaultValue={todo.desc}>
+        <Editable as="i" fontSize="sm" defaultValue={todo.desc}>
           <EditablePreview />
           <EditableInput />
         </Editable>
@@ -61,10 +61,7 @@ export const Todo = ({
       <Spacer />
       <Editable defaultValue={todo.date}>
         <EditablePreview />
-        <Input
-          as={EditableInput}
-          type="date"
-        />
+        <Input as={EditableInput} type="date" />
       </Editable>
       <IconButton
         variant="ghost"

@@ -1,18 +1,20 @@
-import { Button, Editable, EditableInput, EditablePreview, Input } from '@chakra-ui/react';
+import { Button, Text } from '@chakra-ui/react';
 import React, { FC } from 'react';
+import { FaTasks } from 'react-icons/fa';
 
 interface HomeButtonProps {
     text: string;
     setHomeShowCase: Function;
     icon: JSX.Element;
 }
+
 interface ProjButtonProps {
     text: string;
     setProject: Function;
-    changeProjectName: Function;
     icon: JSX.Element;
     index: number;
 }
+
 export const HomeButton = ({setHomeShowCase, text, icon, ...props}:HomeButtonProps) => {
      return (
     <Button
@@ -24,11 +26,11 @@ export const HomeButton = ({setHomeShowCase, text, icon, ...props}:HomeButtonPro
       onClick={() => setHomeShowCase(text)}
       leftIcon={icon}
 
-    >{`${text}`}</Button>
+    >{`${text} Tasks`}</Button>
 
   )
 };
-export const ProjectButton:FC<ProjButtonProps> = ({setProject, changeProjectName, text, icon, index, ...props}) => {
+export const ProjectButton:FC<ProjButtonProps> = ({setProject, text, icon, index, ...props}) => {
   
      return (
     <Button
@@ -41,10 +43,7 @@ export const ProjectButton:FC<ProjButtonProps> = ({setProject, changeProjectName
       leftIcon={icon}
 
     >
-      <Editable defaultValue={text} onSubmit={() => changeProjectName("hey", 1)}>
-      <EditablePreview/>
-      <Input as={EditableInput}/>
-      </Editable>
+      <Text>{text}</Text>
     </Button>
 
   )
