@@ -1,5 +1,5 @@
 import { Button, HStack, Input } from "@chakra-ui/react";
-import React, { ChangeEvent } from "react";
+import React from "react";
 interface AddTodoProps {
   handleSubmitTodo: Function;
   isValid: boolean;
@@ -20,7 +20,7 @@ export const AddTodo = ({ handleSubmitTodo, isValid }: AddTodoProps) => {
           name="task"
           value={task}
           onChange={(e) => setTask(e.target.value)}
-          focusBorderColor="white"
+          focusBorderColor={isValid? "white": "red.400"}
           variant="filled"
           placeholder="What to do...?"
           color={isValid ? "grey" : "red"}

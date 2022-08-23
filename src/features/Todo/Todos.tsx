@@ -48,9 +48,9 @@ export const Todos = () => {
   const handleSubmitTodo = (task: string) => {
     const todo = {
        task: task,
-  desc: "Click me",
+  desc: "Add Description",
   proj: 1,
-  date: "Click me",
+  date: "Add Date",
   complete: false,
   important: false,
     }
