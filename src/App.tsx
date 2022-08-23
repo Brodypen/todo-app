@@ -52,7 +52,7 @@ export const App = () => {
         </Flex>{" "}
         <Heading>{todoProjects[selectProject]}</Heading>
         <Spacer />
-        <Todos project={selectProject}></Todos>
+        <Todos project={selectProject} filter={filter}></Todos>
       </VStack>
     </ChakraProvider>
   );

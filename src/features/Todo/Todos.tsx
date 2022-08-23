@@ -1,10 +1,11 @@
 import { Button, Divider, Stack, StackDivider, VStack } from "@chakra-ui/react";
-import React, { ChangeEvent, FormEvent } from "react";
+import React, { ChangeEvent, FormEvent, useEffect } from "react";
 import { Todo } from "./Todo";
 import data from "../../data/data.json";
 import { AddTodo } from "./AddTodo";
 interface TodosProps {
   project: number;
+  filter: string;
 }
 interface TodoProps {
   task: string;
@@ -18,9 +19,24 @@ interface ChangeProps {
   complete: boolean;
   important: boolean;
 }
-export const Todos = ({ project, ...props }: TodosProps) => {
+export const Todos = ({ project, filter, ...props }: TodosProps) => {
   const [todoList, setToDoList] = React.useState<TodoProps[]>(data);
+
   const [valid, setValid] = React.useState<boolean>(true);
+
+  const handleFilter = () => {
+    if (filter === "Important") {
+      const newTodoList = todoList.filter((todo) => todo.important === true);
+      if (JSON.stringify(newTodoList) === JSON.stringify(todoList)) {
+        alert("Wtf");
+      } else {
+        console.table(newTodoList);
+        console.table(todoList);
+        setToDoList(newTodoList);
+      }
+    }
+  };
+  handleFilter();
   // Todos Functions
   const handleDeleteTodo = (task: string) => {
     const updatedTodos = todoList.filter((todo) => todo.task !== task);
@@ -34,10 +50,13 @@ export const Todos = ({ project, ...props }: TodosProps) => {
     }
     setToDoList(newTodos);
   };
+
   // Add new Todos
   const handleAddTodos = (todo: TodoProps) => {
     const newTodos = [...todoList];
-    const CheckTodos = newTodos.find((Ntodo) => Ntodo.task === todo.task && Ntodo.proj === todo.proj);
+    const CheckTodos = newTodos.find(
+      (Ntodo) => Ntodo.task === todo.task && Ntodo.proj === todo.proj
+    );
     if (!CheckTodos) {
       const updatedTodos = [...todoList, todo];
       setToDoList(updatedTodos);
