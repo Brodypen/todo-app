@@ -35,7 +35,6 @@ export const App = () => {
     }
   };
   const filterProject = (filterOption: string) => {
-    alert(filterOption);
     setFilter(filterOption);
   }
 

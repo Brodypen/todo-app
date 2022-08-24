@@ -24,19 +24,6 @@ export const Todos = ({ project, filter, ...props }: TodosProps) => {
 
   const [valid, setValid] = React.useState<boolean>(true);
 
-  const handleFilter = () => {
-    if (filter === "Important") {
-      const newTodoList = todoList.filter((todo) => todo.important === true);
-      if (JSON.stringify(newTodoList) === JSON.stringify(todoList)) {
-        alert("Wtf");
-      } else {
-        console.table(newTodoList);
-        console.table(todoList);
-        setToDoList(newTodoList);
-      }
-    }
-  };
-  handleFilter();
   // Todos Functions
   const handleDeleteTodo = (task: string) => {
     const updatedTodos = todoList.filter((todo) => todo.task !== task);
@@ -87,16 +74,42 @@ export const Todos = ({ project, filter, ...props }: TodosProps) => {
       maxW={{ base: "90vw", sm: "80vw", lg: "50vw", xl: "40vw" }}
       alignItems="stretch"
     >
-      {todoList.map((todo: TodoProps) =>
-        todo.proj === project ? (
-          <Todo
-            todo={todo}
-            key={`${todo.task}`}
-            handleDeleteTodo={handleDeleteTodo}
-            handleChangeTodo={handleChangeTodo}
-          ></Todo>
-        ) : null
-      )}
+      {filter === "Important"
+        ? todoList
+            .filter((todo) => todo.important === true)
+            .map((todo: TodoProps) =>
+              todo.proj === project ? (
+                <Todo
+                  todo={todo}
+                  key={`${todo.task}`}
+                  handleDeleteTodo={handleDeleteTodo}
+                  handleChangeTodo={handleChangeTodo}
+                ></Todo>
+              ) : null
+            )
+        : filter === "Unfinished"
+        ? todoList
+            .filter((todo) => todo.complete === false)
+            .map((todo: TodoProps) =>
+              todo.proj === project ? (
+                <Todo
+                  todo={todo}
+                  key={`${todo.task}`}
+                  handleDeleteTodo={handleDeleteTodo}
+                  handleChangeTodo={handleChangeTodo}
+                ></Todo>
+              ) : null
+            )
+        : todoList.map((todo: TodoProps) =>
+            todo.proj === project ? (
+              <Todo
+                todo={todo}
+                key={`${todo.task}`}
+                handleDeleteTodo={handleDeleteTodo}
+                handleChangeTodo={handleChangeTodo}
+              ></Todo>
+            ) : null
+          )}
 
       <AddTodo handleSubmitTodo={handleSubmitTodo} isValid={valid} />
     </VStack>

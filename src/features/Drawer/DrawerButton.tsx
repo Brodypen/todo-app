@@ -17,12 +17,11 @@ import { HomeButton, ProjectButton } from "./HomeButton";
 import { AddButton } from "./AddProjButton";
 import {
   FaCalendar,
-  FaCalendarDay,
-  FaCalendarWeek,
   FaStar,
   FaBars,
   FaGithub,
   FaPlus,
+  FaStrikethrough,
 } from "react-icons/fa";
 
 interface DrawerButtonProps {
@@ -63,13 +62,8 @@ export const DrawerButton:FC<DrawerButtonProps> = ({
                 setHomeShowCase={sortTaskOptions}
               ></HomeButton>
               <HomeButton
-                text="Today"
-                icon={<FaCalendarDay />}
-                setHomeShowCase={sortTaskOptions}
-              ></HomeButton>
-              <HomeButton
-                text="Week"
-                icon={<FaCalendarWeek />}
+                text="Unfinished"
+                icon={<FaStrikethrough/>}
                 setHomeShowCase={sortTaskOptions}
               ></HomeButton>
               <HomeButton
@@ -110,7 +104,9 @@ export const DrawerButton:FC<DrawerButtonProps> = ({
                   color="current"
                   justifyContent="flex-start"
                   leftIcon={<FaGithub />}
-                >Github</Button>
+                >
+                  Github
+                </Button>
               </Link>
             </Stack>
           </DrawerBody>
