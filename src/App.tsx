@@ -31,12 +31,19 @@ export const App = () => {
     if (todoProjects.length >= 5) {
     } else {
       const newProjects = [...todoProjects, projName];
-      setTodoProjects(newProjects);
+      const checkDupProjects = [...new Set(newProjects)];
+      setTodoProjects(checkDupProjects);
     }
+  };
+  const deleteProject = (projName: string) => {
+    const newProjects = todoProjects.filter(
+      (proj: String) => proj !== projName
+    );
+    setTodoProjects(newProjects);
   };
   const filterProject = (filterOption: string) => {
     setFilter(filterOption);
-  }
+  };
 
   return (
     <ChakraProvider theme={theme}>
@@ -47,11 +54,12 @@ export const App = () => {
             addNewProjects={addNewProject}
             selectProjectOnClick={switchProjects}
             sortTaskOptions={filterProject}
+            deleteProject={deleteProject}
           />
         </Flex>{" "}
         <Heading>{todoProjects[selectProject]}</Heading>
         <Spacer />
-        <Todos project={selectProject} filter={filter}></Todos>
+        <Todos project={todoProjects[selectProject]} filter={filter}></Todos>
       </VStack>
     </ChakraProvider>
   );

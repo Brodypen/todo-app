@@ -1,16 +1,16 @@
-import { Button, Divider, Stack, StackDivider, VStack } from "@chakra-ui/react";
-import React, { ChangeEvent, FormEvent, useEffect } from "react";
+import { StackDivider, VStack } from "@chakra-ui/react";
+import React from "react";
 import { Todo } from "./Todo";
 import data from "../../data/data.json";
 import { AddTodo } from "./AddTodo";
 interface TodosProps {
-  project: number;
+  project: string;
   filter: string;
 }
 interface TodoProps {
   task: string;
   desc: string;
-  proj: number;
+  proj: string;
   date: string;
   complete: boolean;
   important: boolean;

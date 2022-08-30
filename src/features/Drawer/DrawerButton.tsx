@@ -11,6 +11,7 @@ import {
   useDisclosure,
   Link,
   Button,
+  Text,
 } from "@chakra-ui/react";
 import { ColorModeSwitcher } from "../../components/ColorModeSwitcher";
 import { HomeButton, ProjectButton } from "./HomeButton";
@@ -29,12 +30,14 @@ interface DrawerButtonProps {
   addNewProjects: Function;
   selectProjectOnClick: Function;
   sortTaskOptions: Function;
+  deleteProject: Function;
 }
 export const DrawerButton:FC<DrawerButtonProps> = ({
   Projects,
   addNewProjects,
   selectProjectOnClick,
   sortTaskOptions,
+  deleteProject,
   ...props
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -81,6 +84,7 @@ export const DrawerButton:FC<DrawerButtonProps> = ({
                   text={project}
                   icon={<FaBars />}
                   setProject={selectProjectOnClick}
+                  deleteProject={deleteProject}
                   index={index}
                 ></ProjectButton>
               ))}

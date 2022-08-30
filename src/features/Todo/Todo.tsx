@@ -16,7 +16,7 @@ import { FaRegStar, FaStar } from "react-icons/fa";
 type todo = {
   task: string;
   desc: string;
-  proj: number;
+  proj: string;
   date: string;
   complete: boolean;
   important: boolean;
