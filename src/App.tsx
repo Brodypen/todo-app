@@ -9,11 +9,15 @@ import {
 } from "@chakra-ui/react";
 import { DrawerButton } from "./features/Drawer/DrawerButton";
 import { Todos } from "./features/Todo/Todos";
+import { useEffect } from "react";
+
 
 export const App = () => {
-  const [todoProjects, setTodoProjects] = React.useState<string[]>([
-    "Todo List",
-  ]);
+  const [todoProjects, setTodoProjects] = React.useState(() => (JSON.parse(localStorage.getItem('todoProjects')!)) || ["Todo List"]);
+
+  useEffect(() => {
+    localStorage.setItem('todoProjects', JSON.stringify(todoProjects));
+  }, [todoProjects])
 
   const [selectProject, setSelectProject] = React.useState(0);
   const [filter, setFilter] = React.useState("All");

@@ -1,5 +1,5 @@
 import { StackDivider, VStack } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
 import { Todo } from "./Todo";
 import data from "../../data/data.json";
 import { AddTodo } from "./AddTodo";
@@ -20,10 +20,12 @@ interface ChangeProps {
   important: boolean;
 }
 export const Todos = ({ project, filter, ...props }: TodosProps) => {
-  const [todoList, setToDoList] = React.useState<TodoProps[]>(data);
+  const [todoList, setToDoList] = React.useState<TodoProps[]>(() => (JSON.parse(localStorage.getItem('todoList')!)) || data);
 
   const [valid, setValid] = React.useState<boolean>(true);
-
+  useEffect(() => {
+    localStorage.setItem("todoList", JSON.stringify(todoList));
+  }, [todoList]);
   // Todos Functions
   const handleDeleteTodo = (task: string) => {
     const updatedTodos = todoList.filter((todo) => todo.task !== task);

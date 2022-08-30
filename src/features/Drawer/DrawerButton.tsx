@@ -78,6 +78,7 @@ export const DrawerButton:FC<DrawerButtonProps> = ({
               <DrawerHeader textAlign="left" borderBottomWidth="1px">
                 Projects
               </DrawerHeader>
+              <Text as="i" alignSelf="center">Deleting projects does not delete tasks!</Text>
               {Projects.map((project, index) => (
                 <ProjectButton
                   key={index}
